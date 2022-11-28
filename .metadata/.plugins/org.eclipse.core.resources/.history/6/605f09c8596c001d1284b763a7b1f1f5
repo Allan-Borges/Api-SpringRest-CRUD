@@ -1,0 +1,26 @@
+package com.alan.api.repositoryImpl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.context.ApplicationContext;
+
+import com.alan.api.ApiSpringApplication;
+import com.alan.api.domain.model.Produtos;
+import com.alan.api.infrastructure.jpa.ProdutosRepositoryImpl;
+import com.alan.api.repository.ProdutosRepository;
+
+public class ListarProdutos {
+
+	public static void main(String[] args) {
+
+		ProdutosRepository repository = new ProdutosRepositoryImpl();
+
+		List<Produtos> produtos = repository.listarTodos();
+
+		produtos.forEach(prod -> System.out.println(prod.getNome()));
+
+	}
+
+}

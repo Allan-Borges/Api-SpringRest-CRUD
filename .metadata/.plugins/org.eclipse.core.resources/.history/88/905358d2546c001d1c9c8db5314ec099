@@ -1,0 +1,47 @@
+package com.alan.api.infrastructure.jpa;
+
+import java.util.List;
+
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
+
+import com.alan.api.domain.model.Produtos;
+import com.alan.api.repository.ProdutosRepository;
+
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.transaction.Transactional;
+
+@Repository
+public class ProdutosRepositoryImpl implements ProdutosRepository {
+
+	@PersistenceContext
+	private EntityManager manager;
+
+	@Override
+	public List<Produtos> listarTodos() {
+		return manager.createQuery(" from Produtos", Produtos.class).getResultList();
+	}
+
+	@Override
+	public Produtos buscarPorId(Long id) {
+		return manager.find(Produtos.class, id);
+	}
+
+	@Override
+	@Transactional
+	public Produtos adicionar(Produtos produto) {
+		return manager.merge(produto);
+	}
+
+	@Override
+	@Transactional
+	public void remover(Produtos produto) {
+		produto = buscarPorId(produto.getId());
+		manager.remove(produto);
+
+	}
+
+
+
+}

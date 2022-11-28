@@ -1,0 +1,5 @@
+package com.alan.api.repositoryImpl;
+
+public class ListarProdutos {
+
+}

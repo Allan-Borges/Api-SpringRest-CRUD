@@ -1,0 +1,6 @@
+package com.alan.api.repository;
+
+public interface ProdutosRepository {
+	
+	
+}

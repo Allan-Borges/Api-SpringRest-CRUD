@@ -1,0 +1,22 @@
+package com.alan.api.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.alan.api.domain.model.Produtos;
+import com.alan.api.repository.ProdutosRepository;
+
+@RestController
+@RequestMapping
+public class ProdutosController {
+	
+	@Autowired
+	private ProdutosRepository produtosRepository;
+	
+	public List<Produtos> listar(){
+		return produtosRepository.listarTodos();
+	}
+}

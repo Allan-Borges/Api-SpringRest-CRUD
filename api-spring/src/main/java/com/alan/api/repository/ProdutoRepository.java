@@ -1,0 +1,16 @@
+package com.alan.api.repository;
+
+import java.util.List;
+
+import com.alan.api.domain.model.Produto;
+
+public interface ProdutoRepository {
+
+	List<Produto> listarTodos();
+
+	Produto buscarPorId(Long id);
+
+	Produto adicionar(Produto produto);
+
+	void remover(Produto produto);
+}

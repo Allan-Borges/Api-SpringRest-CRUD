@@ -1,0 +1,1 @@
+insert into produtos (nome, preco) values ('Televisão', 1200.0)

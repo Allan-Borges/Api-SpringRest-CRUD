@@ -1,0 +1,34 @@
+package com.alan.api.infrastructure.jpa;
+
+import java.util.List;
+
+import com.alan.api.domain.model.Produtos;
+import com.alan.api.repository.ProdutosRepository;
+
+public class ProdutosRepositoryImpl implements ProdutosRepository {
+
+	@Override
+	public List<Produtos> listarTodos() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Produtos buscarPorId(Long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Produtos adicionar() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void remover() {
+		// TODO Auto-generated method stub
+
+	}
+
+}
