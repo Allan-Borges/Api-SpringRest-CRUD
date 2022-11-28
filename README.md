@@ -2,3 +2,4 @@
 # Utilizando o Maven como gerenciador de dependência.
 # Implementando Hibernate uilizando a especificação JPA.
 # Relizando CRUD de um recurso.
+# Utilizando o lombok.
