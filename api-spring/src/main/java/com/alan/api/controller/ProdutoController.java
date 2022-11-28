@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.alan.api.domain.model.Produto;
+import com.alan.api.domain.model.service.CadastroProdutoService;
 import com.alan.api.repository.ProdutoRepository;
 
 @RestController
@@ -27,6 +28,9 @@ public class ProdutoController {
 
 	@Autowired
 	private ProdutoRepository produtoRepository;
+
+	@Autowired
+	private CadastroProdutoService cadastroProdutoService;
 
 	@GetMapping
 	public List<Produto> listar() {
@@ -47,7 +51,7 @@ public class ProdutoController {
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public Produto adicionar(@RequestBody Produto produto) {
-		return produtoRepository.adicionar(produto);
+		return cadastroProdutoService.salvar(produto);
 	}
 
 	@PutMapping("/{produtoId}")

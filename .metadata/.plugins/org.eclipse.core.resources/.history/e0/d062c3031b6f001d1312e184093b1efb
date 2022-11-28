@@ -1,0 +1,5 @@
+package com.alan.api.domain.model.service;
+
+public class CadastroProdutoService {
+
+}
