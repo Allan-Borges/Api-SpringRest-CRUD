@@ -20,6 +20,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.alan.api.domain.model.Produto;
 import com.alan.api.domain.model.service.CadastroProdutoService;
+import com.alan.api.domain.model.service.exceptions.EntidadeEmUsoExeception;
+import com.alan.api.domain.model.service.exceptions.EntidadeNaoEncontradaException;
 import com.alan.api.repository.ProdutoRepository;
 
 @RestController
@@ -69,15 +71,14 @@ public class ProdutoController {
 	@DeleteMapping("/{produtoId}")
 	public ResponseEntity<Produto> remover(@PathVariable Long produtoId) {
 
-		Produto produto = produtoRepository.buscarPorId(produtoId);
-
 		try {
-			if (produto != null) {
-				produtoRepository.remover(produto);
-				return ResponseEntity.noContent().build();
-			}
+			cadastroProdutoService.remover(produtoId);
+			return ResponseEntity.noContent().build();
+
+		} catch (EntidadeNaoEncontradaException e) {
 			return ResponseEntity.notFound().build();
-		} catch (DataIntegrityViolationException e) {
+
+		} catch (EntidadeEmUsoExeception e) {
 			return ResponseEntity.status(HttpStatus.CONFLICT).build();
 		}
 	}
